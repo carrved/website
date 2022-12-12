@@ -42,7 +42,8 @@
 }
 
 body {
-  background-color: rgb(17, 17, 17);
+  background-image:linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)) , url(https://res.cloudinary.com/dvqqmiwj1/image/upload/v1669363831/upj0oxuqgvw2qqpmocg8.gif);
+  background-size: cover;
   height: 100vh;
   display: flex;
   align-items: center;
