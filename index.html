@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en" >
+  <head>
+    <meta charset="UTF-8">
+    <title>z4xi</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Antonia_Sautter_Creations.png/120px-Antonia_Sautter_Creations.png"/>
+  </head>
+  <body>
+    <script>
+      function autoType(elementClass, typingSpeed){
+        var thhis = $(elementClass);
+        thhis.css({
+          "position": "relative",
+          "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function(){
+          thhis.css("opacity",1);
+          thhis.prev().removeAttr("style");
+          thhis.text("");
+          for(var i = 0; i < amntOfChars; i++){
+            (function(i,char){
+              setTimeout(function() {        
+                newString += char;
+                thhis.text(newString);
+              },i*typingSpeed);
+            })(i+1,text[i]);
+          }
+        },1500);
+      }
+
+      function audioPlay() {
+        var audio = document.getElementById("audio");
+        audio.volume = 0.05
+        audio.play()
+      }
+    </script>
+    <audio loop preload="auto" id="audio">
+      <source src="./music.mp3" type="audio/mp3">
+    </audio>
+    <input type="checkbox" autocomplete="off" id="overlay-toggle" onclick="autoType('.type-js',200); audioPlay();">
+    <div class="overlay fullscreen">
+        <label for="overlay-toggle" >
+            <span class="no-hover" style="font-family: monospace; font-size: 0.6em;">tap</span>
+            <span class="hover" style="font-family: monospace; font-size: 0.6em;">click</span>
+        </label>
+    </div>
+    <div class="type-js headline">
+      <h1 class="text-js">z4xi</h1>
+    </div>
+    <a href="./socials.html" class="credit">socials</a>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script><script  src="./script.js"></script>
+  </body>
+</html>
